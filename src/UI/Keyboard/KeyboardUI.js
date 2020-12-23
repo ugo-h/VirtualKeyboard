@@ -20,7 +20,8 @@ export class KeyboardUI{
     onKeyPress(handler) {
         this.element.addEventListener('click', (event) => {
             if(event.target.classList.contains('keyboard__key')) {
-                handler(event.target.innerText)
+                const key = new Key(event.target.innerText);
+                handler(key)
             }
         })
     }
