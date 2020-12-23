@@ -24,7 +24,7 @@ class Keyboard{
     manageSpecialKeys(key) {
         switch(key) {
             case 'Backspace': {
-                console.log(this.input.getCursorPosition());
+                this.input.deleteCharsAtCurrentPosition()
                 break;
             }
             default: break;

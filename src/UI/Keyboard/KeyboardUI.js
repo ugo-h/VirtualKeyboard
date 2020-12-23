@@ -6,6 +6,7 @@ export class KeyboardUI{
         const container = document.getElementById(id);
         this.element = createElement('table', {className: 'keyboard'});
         this.render(container, keys);
+      
     }
     
     createKeysMap(keys) {
