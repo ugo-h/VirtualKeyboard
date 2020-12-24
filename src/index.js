@@ -42,6 +42,10 @@ class Keyboard{
                 this.input.addChar(' ')
                 break;
             }
+            case 'Tab': {
+                this.input.addChar(String.fromCharCode(9))
+                break;
+            }
             default: break;
         }
     }
