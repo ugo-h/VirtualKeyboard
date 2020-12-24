@@ -9,3 +9,13 @@ export function createElement(type, props, ...children) {
     return element;
 }
 
+export function getCursorPosition(current) {
+    return {
+        start: current.selectionStart,
+        end: current.selectionEnd
+    }
+}
+export function setCursorPositionTo(current, value) {
+    current.selectionStart = value;
+    current.selectionEnd = value;
+}

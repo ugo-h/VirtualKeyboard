@@ -1,21 +1,19 @@
 import { KeyboardUI } from './UI/Keyboard/KeyboardUI';
-import Languages from './languageConfig';
-import {InputField} from './UI/InputField/InputField';
+import {ActiveInputField} from './UI/InputField/InputField';
+import Languages from './config/languageConfig';
 
 class Keyboard{
     constructor() {
-        Languages.english;
-        console.log(Languages.english);
         this.ui = new KeyboardUI('container', Languages.english);
         this.ui.onKeyPress(this.pressHandler.bind(this));
-        this.input = new InputField('input');
+        this.input = new ActiveInputField('input');
+        this.isCapsOn = false;
     }
 
     pressHandler(key) {
-        this.input.focus()
-        console.log(key.isSpecialKey())
         if(!key.isSpecialKey()) {
-            this.input.addChar(key.value)
+            const char = this.isCapsOn? key.value.toUpperCase(): key.value;
+            this.input.addChar(char)
         } else {
             this.manageSpecialKeys(key.value)
         }
@@ -24,7 +22,19 @@ class Keyboard{
     manageSpecialKeys(key) {
         switch(key) {
             case 'Backspace': {
-                this.input.deleteCharsAtCurrentPosition()
+                this.input.deleteChar()
+                break;
+            };
+            case 'Enter': {
+                this.input.addChar('\n');
+                break
+            };
+            case 'CapsLock': {
+                this.isCapsOn = !this.isCapsOn;
+                this.ui.changeRegister(this.isCapsOn)
+                break;
+            } case 'Space': {
+                this.input.addChar(' ')
                 break;
             }
             default: break;

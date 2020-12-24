@@ -1,25 +1,25 @@
-import {Key} from './Key';
+import {Key} from '../../Key/Key';
 import {createElement} from '../domHelper';
 
 export class KeyboardUI{
     constructor(id, keys) {
-        const container = document.getElementById(id);
-        this.element = createElement('table', {className: 'keyboard'});
-        this.render(container, keys);
-      
+        this.container = document.getElementById(id);
+        this.keys = map2D(keys, (text) => new Key(text));
+        this.render();
     }
     
-    createKeysMap(keys) {
-        console.log(keys)
-        return keys.map(row => {
-            return row.map(key => {
-                return new Key(key);
-            });
-        });
+    changeRegister(isCapsOn) {
+        forEach2D(this.keys, key => key.changeRegister(isCapsOn))
+        this.container.innerHTML = '';
+        this.render(container)
+    }
+
+    preventFocus() {
+        this.container.addEventListener('mousedown', (ev) => ev.preventDefault())
     }
 
     onKeyPress(handler) {
-        this.element.addEventListener('click', (event) => {
+        this.container.addEventListener('click', (event) => {
             if(event.target.classList.contains('keyboard__key')) {
                 const key = new Key(event.target.innerText);
                 handler(key)
@@ -27,19 +27,40 @@ export class KeyboardUI{
         })
     }
 
-    render(container, keys) {
-        const keyboardMap = this.createKeysMap(keys)
+    render() {
+        const element = createKeyboardTableElement(this.keys);
+        this.preventFocus();
+        this.container.append(element);
+    }
+}
+
+function map2D(arr, cb) {
+    return arr.map(row => row.map(cb));   
+};
+function forEach2D(arr, cb) {
+    arr.forEach(row => row.forEach(cb));   
+}
+
+function createKeyboardTableElement(keyboardMap) {
+    function _createTable(keyboardMap) {
+        const table = createElement('table', {className: 'keyboard'});
         for(let i = 0; i < keyboardMap.length; i++) {
             const row = createElement('tr', {className:'keyboard__row'})
             for(let key of keyboardMap[i]) {                
-                const keyElement = createElement('td', {
-                    className:'keyboard__key'
-                }, key.value);
-                keyElement.setAttribute('colspan', key.size);
+                const keyElement = _createKeyElement(key);
                 row.append(keyElement);
             }
-            this.element.append(row);
+            table.append(row);
         }
-        container.append(this.element);
+        return table;
+    };
+
+    function _createKeyElement(key) {
+        const keyElement = createElement('td', {
+            className:'keyboard__key'
+        }, key.value);
+        keyElement.setAttribute('colspan', key.size);
+        return keyElement
     }
+    return _createTable(keyboardMap)
 }

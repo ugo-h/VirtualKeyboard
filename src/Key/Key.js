@@ -18,7 +18,10 @@ export class Key{
     isSpecialKey() {
         return Boolean(Key.specialKeys[this.value])
     }
-
+    changeRegister(isCapsOn) {
+        if(this.isSpecialKey()) return
+        this.value = isCapsOn? this.value.toUpperCase(): this.value.toLowerCase();
+    }
     _getKeySize() {
         return Key.specialKeys[this.value] || 2;
     }

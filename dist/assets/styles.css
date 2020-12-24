@@ -1,0 +1,14 @@
+.keyboard{
+    /* display: flex;
+    flex-flow: column;
+    align-items: center; */
+}
+
+
+
+.keyboard__key{
+    text-align: center;
+    padding: 0.5rem;
+    background: #AFE0CEF3;
+
+}
