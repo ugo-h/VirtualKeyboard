@@ -4,7 +4,14 @@ import {createElement} from '../domHelper';
 export class KeyboardUI{
     constructor(id, keys) {
         this.container = document.getElementById(id);
-        this.keys = map2D(keys, (text) => new Key(text));
+        this.keys = map2D(keys, (item) => {
+            if(Array.isArray(item)) {
+                const keyObject = new Key(item[0])
+                keyObject.altValue = item[1]
+                return keyObject;
+            }
+            return new Key(item)
+        });
         this.render();
     }
     
@@ -12,6 +19,12 @@ export class KeyboardUI{
         forEach2D(this.keys, key => key.changeRegister(isCapsOn))
         this.container.innerHTML = '';
         this.render(container)
+    }
+
+    changeSpecialCharactersAndNums(isShiftOn) {
+        forEach2D(this.keys, key => key.changeToAlt(isShiftOn));
+        this.container.innerHTML = '';
+        this.render(container);
     }
 
     preventFocus() {

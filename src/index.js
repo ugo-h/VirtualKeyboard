@@ -8,6 +8,7 @@ class Keyboard{
         this.ui.onKeyPress(this.pressHandler.bind(this));
         this.input = new ActiveInputField('input');
         this.isCapsOn = false;
+        this.isShiftOn = false;
     }
 
     pressHandler(key) {
@@ -33,6 +34,10 @@ class Keyboard{
                 this.isCapsOn = !this.isCapsOn;
                 this.ui.changeRegister(this.isCapsOn)
                 break;
+            }case 'Shift': {
+                this.isShiftOn = !this.isShiftOn;
+                this.ui.changeSpecialCharactersAndNums(this.isShiftOn);
+                break;  
             } case 'Space': {
                 this.input.addChar(' ')
                 break;
