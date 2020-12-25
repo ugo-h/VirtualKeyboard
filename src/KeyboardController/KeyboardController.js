@@ -7,14 +7,14 @@ export default class KeyboardController{
     connectInput(input) {
         this.inputAPI = input;
     }
-    connectUI(ui) {
-        this.uiAPI = ui
+    connectState(state) {
+        this.stateAPI = state
     }
     initSpecialKeysMethods() {
         this.specialKeysMethods =  {
             'Backspace': () => this.inputAPI.deleteChar(),
-            'CapsLock': () => this.uiAPI.onCapsLock(),
-            'Shift': () => this.uiAPI.onShift()
+            'CapsLock': () => this.stateAPI.onCapsLock(),
+            'Shift': () => this.stateAPI.onShift()
         }
     }
    
