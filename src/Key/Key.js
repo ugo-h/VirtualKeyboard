@@ -30,6 +30,7 @@ export class Key{
     changeRegister(isCapsOn) {
         if(this.isSpecialKey()) return
         this.value = isCapsOn? this.value.toUpperCase(): this.value.toLowerCase();
+        
     }
     _getKeySize() {
         return Key.specialKeys[this.value] || 2;

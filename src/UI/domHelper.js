@@ -19,3 +19,5 @@ export function setCursorPositionTo(current, value) {
     current.selectionStart = value;
     current.selectionEnd = value;
 }
+
+
