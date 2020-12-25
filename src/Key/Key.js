@@ -36,3 +36,11 @@ export class Key{
         return Key.specialKeys[this.value] || 2;
     }
 }
+
+export class LangKey extends Key{
+    constructor(value) {
+        super(value);
+        this.value = 'Lang';
+        this.lang = value
+    }
+}

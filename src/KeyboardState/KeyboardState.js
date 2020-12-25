@@ -1,17 +1,26 @@
-import {Key} from '../Key/Key';
+import {Key, LangKey} from '../Key/Key';
 
 export default class KeyboardState{
     constructor(keys) {
-        this.keys = this._createKeys2DArr(keys);
         this.state = {
             isCapsOn: false,
-            isShiftOn: false
+            isShiftOn: false,
+            langIndex: 0
         };
+        this.languages = keys;
+        this.keys = this._createKeys2DArr(this.languages[this.state.langIndex]);
         this._renderUI = null;
     }
    
     connectRender(renderFunc) {
-        this._renderUI = renderFunc;
+        this._renderUI = () => renderFunc(this.keys);
+    }
+
+    changeLang() {
+        this.state.langIndex++;
+        if(this.state.langIndex >= this.languages.length) this.state.langIndex = 0;
+        this.keys = this._createKeys2DArr(this.languages[this.state.langIndex]);
+        this._renderUI();
     }
 
     changeRegister() {

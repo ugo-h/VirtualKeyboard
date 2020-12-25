@@ -9,15 +9,15 @@ class App{
         const input = new ActiveInputField('input');
         const controller = new KeyboardController();
         const ui = new KeyboardUI('container');
-        const state = new KeyboardState(Languages.english);
+        const state = new KeyboardState(Languages);
 
         const render = ui.getRenderMethod(state.keys)
-        state.connectRender(render);
+        state.connectRender(ui._render.bind(ui));
 
         controller.connectInput(inputInterface(input));
         controller.connectState(StateInterface(state));
         controller.initSpecialKeysMethods();
-        
+
         ui.onKeyPress(controller.pressHandler.bind(controller));
         render();
     }
@@ -33,7 +33,8 @@ function inputInterface(input) {
 function StateInterface(UI) {
     return {
         onCapsLock: UI.changeRegister.bind(UI),
-        onShift: UI.changeSpecialCharactersAndNums.bind(UI)
+        onShift: UI.changeSpecialCharactersAndNums.bind(UI),
+        onLang: UI.changeLang.bind(UI)
     }
 }
 

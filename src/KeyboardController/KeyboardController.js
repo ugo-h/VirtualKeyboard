@@ -14,7 +14,8 @@ export default class KeyboardController{
         this.specialKeysMethods =  {
             'Backspace': () => this.inputAPI.deleteChar(),
             'CapsLock': () => this.stateAPI.onCapsLock(),
-            'Shift': () => this.stateAPI.onShift()
+            'Shift': () => this.stateAPI.onShift(),
+            'Lang': () => this.stateAPI.onLang()
         }
     }
    

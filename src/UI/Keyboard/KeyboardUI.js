@@ -1,5 +1,4 @@
-import {Key} from '../../Key/Key';
-
+import {Key, LangKey} from '../../Key/Key';
 import {createKeyboardTableElement} from '../Keyboard/KeyboardTable';
 
 export class KeyboardUI{
@@ -10,13 +9,14 @@ export class KeyboardUI{
     onKeyPress(handler) {
         this.container.addEventListener('click', (event) => {
             if(event.target.classList.contains('keyboard__key')) {
-                const key = new Key(event.target.innerText);
+                const value = event.target.innerText;
+                const key = new Key(value);
                 handler(key)
             }
         })
     }
-    getRenderMethod(state) {
-        return this._render.bind(this, state)
+    getRenderMethod(keys) {
+        return this._render.bind(this, keys)
     }
     _render(data) {
         const element = createKeyboardTableElement(data);
