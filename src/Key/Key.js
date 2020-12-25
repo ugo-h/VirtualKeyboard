@@ -1,5 +1,5 @@
 export class Key{
-    constructor(value) {
+    constructor(value, id) {
         if(!Key.specialKeys) {
             Key.specialKeys = {
                 'Tab': 3,
@@ -11,6 +11,7 @@ export class Key{
                 'Space': 26
             };
         }
+        this.id = id;
         this.value = value;
         this.altValue = null;
         this.size = this._getKeySize();
@@ -29,18 +30,12 @@ export class Key{
 
     changeRegister(isCapsOn) {
         if(this.isSpecialKey()) return
+        if(!/[a-zA-Z]/.test(this.value)) return;
         this.value = isCapsOn? this.value.toUpperCase(): this.value.toLowerCase();
+        
         
     }
     _getKeySize() {
         return Key.specialKeys[this.value] || 2;
-    }
-}
-
-export class LangKey extends Key{
-    constructor(value) {
-        super(value);
-        this.value = 'Lang';
-        this.lang = value
     }
 }

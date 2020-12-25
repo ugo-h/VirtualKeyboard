@@ -1,6 +1,7 @@
 import { createElement } from "../domHelper";
+import {languageMapping} from '../../config/languageConfig';
 
-export function createKeyboardTableElement(keyboardMap) {
+export function createKeyboardTableElement(keyboardMap, state) {
     function _createTable(keyboardMap) {
         const table = createElement('table', {className: 'keyboard'});
         for(let i = 0; i < keyboardMap.length; i++) {
@@ -16,10 +17,15 @@ export function createKeyboardTableElement(keyboardMap) {
 
     function _createKeyElement(key) {
         const keyElement = createElement('td', {
-            className:'keyboard__key'
+            className:'keyboard__key',
+            id: key.id
         }, key.value);
         keyElement.setAttribute('colspan', key.size);
-        return keyElement
+        
+        if(key.id === 'shift' && state.isShiftOn) keyElement.classList.add('active');
+        if(key.id === 'capslock' && state.isCapsOn) keyElement.classList.add('active');
+        // if(key.id === 'lang') keyElement.innerText = languageMapping[state.langIndex]
+        return keyElement;
     }
     return _createTable(keyboardMap)
 }

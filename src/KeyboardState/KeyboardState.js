@@ -1,4 +1,4 @@
-import {Key, LangKey} from '../Key/Key';
+import {Key} from '../Key/Key';
 
 export default class KeyboardState{
     constructor(keys) {
@@ -13,7 +13,7 @@ export default class KeyboardState{
     }
    
     connectRender(renderFunc) {
-        this._renderUI = () => renderFunc(this.keys);
+        this._renderUI = () => renderFunc(this.keys, this.state);
     }
 
     changeLang() {
@@ -37,12 +37,14 @@ export default class KeyboardState{
     }
     _createKeys2DArr(keys) {
         return map2D(keys, (item) => {
+            
             if(Array.isArray(item)) {
-                const keyObject = new Key(item[0])
+                const keyObject = new Key(item[0], item[0])
                 keyObject.altValue = item[1]
                 return keyObject;
             }
-            return new Key(item)
+            const id = item.toLowerCase();
+            return new Key(item, id)
         });
     }
 }

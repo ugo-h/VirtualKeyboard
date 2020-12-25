@@ -8,7 +8,7 @@ export default class KeyboardController{
         this.inputAPI = input;
     }
     connectState(state) {
-        this.stateAPI = state
+        this.stateAPI = state;
     }
     initSpecialKeysMethods() {
         this.specialKeysMethods =  {

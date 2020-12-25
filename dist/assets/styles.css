@@ -4,15 +4,19 @@
     align-items: center; */
 }
 
-
-
 .keyboard__key{
     cursor: pointer;
-    
+    transition: background, 200ms;
     text-align: center;
     width: 1.5rem;
     height: 1.5rem;
     background: #AFE0CEF3;
-    
+}
 
+.highlighted{
+    background:#5FAFC1;
+}
+.active{
+    background:#4C77AA;
+    color: white;
 }

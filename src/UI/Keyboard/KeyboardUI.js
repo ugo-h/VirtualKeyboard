@@ -1,4 +1,4 @@
-import {Key, LangKey} from '../../Key/Key';
+import {Key} from '../../Key/Key';
 import {createKeyboardTableElement} from '../Keyboard/KeyboardTable';
 
 export class KeyboardUI{
@@ -11,15 +11,15 @@ export class KeyboardUI{
             if(event.target.classList.contains('keyboard__key')) {
                 const value = event.target.innerText;
                 const key = new Key(value);
-                handler(key)
+                event.target.classList.add('highlighted');
+                setTimeout(() => event.target.classList.remove('highlighted'), 100)
+                handler(key);
             }
         })
     }
-    getRenderMethod(keys) {
-        return this._render.bind(this, keys)
-    }
-    _render(data) {
-        const element = createKeyboardTableElement(data);
+ 
+    _render(keys, state) {
+        const element = createKeyboardTableElement(keys, state);
         this.container.innerHTML = '';
         this.container.append(element);
     }
