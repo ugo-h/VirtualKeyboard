@@ -19,7 +19,7 @@ export function createKeyboardTableElement(keyboardMap, state) {
         const table = createElement('table', { className: 'keyboard' });
         for (let i = 0; i < keyboardMap.length; i++) {
             const row = createElement('tr', { className: 'keyboard__row' });
-            Object.keys(keyboardMap[i]).forEach(key => {
+            keyboardMap[i].forEach(key => {
                 const keyElement = _createKeyElement(key);
                 row.append(keyElement);
             });

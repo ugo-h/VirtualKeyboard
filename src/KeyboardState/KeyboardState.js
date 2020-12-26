@@ -19,8 +19,10 @@ export default class KeyboardState {
 
     changeLang() {
         this.state.langIndex += 1;
+        this.state.isCapsOn = false;
+        this.state.isShiftOn = false;
         if (this.state.langIndex >= this.languages.length) this.state.langIndex = 0;
-        this.keys = this._createKeys2DArr(this.languages[this.state.langIndex]);
+        this.keys = Key.createKeys2DArr(this.languages[this.state.langIndex]);
         this._renderUI();
     }
 
