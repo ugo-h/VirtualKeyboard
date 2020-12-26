@@ -15,16 +15,18 @@ export default class KeyboardController {
 
     initSpecialKeysMethods() {
         this.specialKeysMethods = {
-            Backspace: () => this.inputAPI.deleteChar(),
-            CapsLock: () => this.stateAPI.onCapsLock(),
-            Shift: () => this.stateAPI.onShift(),
-            Lang: () => this.stateAPI.onLang()
+            backspace: () => this.inputAPI.deleteChar(),
+            capslock: () => this.stateAPI.onCapsLock(),
+            shift: () => this.stateAPI.onShift(),
+            lang: () => this.stateAPI.onLang(),
+            enter: () => this.inputAPI.addChar('\n'),
+            space: () => this.inputAPI.addChar(' ')
         };
     }
 
     pressHandler(key) {
         if (key.isSpecialKey()) {
-            this._specialKeyHandler(key.value);
+            this._specialKeyHandler(key.id);
         } else {
             this.inputAPI.addChar(key.value);
         }

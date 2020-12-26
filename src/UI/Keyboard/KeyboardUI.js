@@ -11,7 +11,7 @@ export class KeyboardUI {
         this.container.addEventListener('click', (event) => {
             if (event.target.classList.contains('keyboard__key')) {
                 const value = event.target.innerText;
-                const key = new Key(value);
+                const key = new Key(value, event.target.id);
                 event.target.classList.add('highlighted');
                 setTimeout(() => event.target.classList.remove('highlighted'), 100);
                 handler(key);

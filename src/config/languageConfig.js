@@ -6,16 +6,16 @@ export const languageMapping = [
 export const languages = [
     [
         [['`', '~'], ['1', '!'], ['2', '@'], ['3', '#'], ['4', '$'], ['5', '%'], ['6', '^'], ['7', '&'], ['8', '*'], ['9', '('], ['0', ')'], ['-', '_'], ['=', '+'], 'Backspace'],
-        ['Tab'].concat('qwertyuiop'.split(''), [['[', '{'], [']', ['}']], ['\\', '|']]),
-        ['CapsLock'].concat('asdfghjkl'.split(''), [[';', ':'], ['\'', '"'], 'Enter']),
+        [null].concat('qwertyuiop'.split(''), [['[', '{'], [']', ['}']], ['\\', '|']]),
+        ['CapsLock'].concat('asdfghjkl'.split(''), [[';', ':'], ['\'', '"']]),
         ['Shift'].concat('zxcvbnm'.split(''), [[',', '<'], ['.', '>'], ['/', '?']]),
-        ['Lang', 'Space']
+        ['Lang', 'Space', 'Enter']
     ],
     [
         ['ё', ['1', '!'], ['2', '"'], ['3', '№'], ['4', ';'], ['5', '%'], ['6', ':'], ['7', '?'], ['8', '*'], ['9', '('], ['0', ')'], ['-', '_'], ['=', '+'], 'Backspace'],
-        ['Tab'].concat('йцукенгшщзхъ'.split(''), [['\\', '/']]),
-        ['CapsLock'].concat('фывапролджэ'.split(''), 'Enter'),
+        [null].concat('йцукенгшщзхъ'.split(''), [['\\', '/']]),
+        ['CapsLock'].concat('фывапролджэ'.split('')),
         ['Shift'].concat('ячсмитьбю'.split(''), [['.', ',']]),
-        ['Lang', 'Space']
+        ['Lang', 'Space', 'Enter']
     ]
 ];

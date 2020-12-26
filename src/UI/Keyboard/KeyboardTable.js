@@ -4,10 +4,24 @@ import { createElement } from '../domHelper';
 
 export function createKeyboardTableElement(keyboardMap, state) {
     function _createKeyElement(key) {
+        if (key.value === null) {
+            const element = createElement('td', {
+                className: 'keyboard__blanc'
+            });
+            element.setAttribute('colspan', 3);
+            return element;
+        }
+        let innerValue = key.icon
+            ? createElement('img', {
+                className: 'keyboard__icon',
+                src: key.icon,
+                alt: key.value
+            })
+            : key.value;
         const keyElement = createElement('td', {
             className: 'keyboard__key',
             id: key.id
-        }, key.value);
+        }, innerValue);
         keyElement.setAttribute('colspan', key.size);
         if (key.id === 'shift' && state.isShiftOn) keyElement.classList.add('active');
         if (key.id === 'capslock' && state.isCapsOn) keyElement.classList.add('active');
