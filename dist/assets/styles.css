@@ -5,6 +5,8 @@
 }
 
 .keyboard__key{
+    position: relative;
+    vertical-align: center;
     box-sizing: border-box;
     cursor: pointer;
     transition: background, 200ms;
@@ -14,13 +16,22 @@
     height: 1.5rem;
     background: #AFE0CEF3;
 }
+.keyboard__key:hover{
+    background: #AFE0C1;
+}
 .keyboard__icon{
-    width: 1rem;
-    height: 1rem;
+    position: relative;
+    top: 0.1rem;
+    margin: 0 0.2rem;
+    width: 0.8rem;
+    height: 0.8rem;
     pointer-events: none;
 }
 .highlighted{
     background:#5FAFC1;
+}
+.highlighted:hover{
+    background: #5FAFC1;
 }
 .active{
     background:#4C77AA;

@@ -1,5 +1,6 @@
 import { Key } from '../../Key/Key';
 import { createKeyboardTableElement } from '../Keyboard/KeyboardTable';
+import { playAnimation } from '../domHelper';
 
 export class KeyboardUI {
     constructor(id) {
@@ -11,10 +12,9 @@ export class KeyboardUI {
         this.container.addEventListener('click', (event) => {
             if (event.target.classList.contains('keyboard__key')) {
                 const value = event.target.innerText;
-                const key = new Key(value, event.target.id);
-                event.target.classList.add('highlighted');
-                setTimeout(() => event.target.classList.remove('highlighted'), 100);
-                handler(key);
+                const id = event.target.id;
+                playAnimation(event.target);
+                handler(new Key(value, id));
             }
         });
     }

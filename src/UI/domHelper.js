@@ -20,3 +20,8 @@ export function setCursorPositionTo(current, value) {
     current.selectionStart = value;
     current.selectionEnd = value;
 }
+
+export function playAnimation(element) {
+    element.classList.add('highlighted');
+    setTimeout(() => element.classList.remove('highlighted'), 100);
+}

@@ -1,6 +1,6 @@
 export const languageMapping = [
-    'eng',
-    'rus'
+    'en',
+    'ru'
 ];
 
 export const languages = [

@@ -1,3 +1,9 @@
+/* The code below violates principle of openness to extension and closeness to modification,
+but i don't know if I need to fix it, because it will make code mode interconnected
+and harder to work with. For example if I create a class for each special button with
+the action method, I still will have to use switch operator to detect if the key
+is of the proper type. (case 'Enter': new EnterKey()) */
+
 export default class KeyboardController {
     constructor() {
         this.inputAPI = null;
@@ -16,11 +22,11 @@ export default class KeyboardController {
     initSpecialKeysMethods() {
         this.specialKeysMethods = {
             backspace: () => this.inputAPI.deleteChar(),
+            enter: () => this.inputAPI.addChar('\n'),
+            space: () => this.inputAPI.addChar(' '),
             capslock: () => this.stateAPI.onCapsLock(),
             shift: () => this.stateAPI.onShift(),
-            lang: () => this.stateAPI.onLang(),
-            enter: () => this.inputAPI.addChar('\n'),
-            space: () => this.inputAPI.addChar(' ')
+            lang: () => this.stateAPI.onLang()
         };
     }
 
@@ -32,7 +38,7 @@ export default class KeyboardController {
         }
     }
 
-    _specialKeyHandler(keyName) {
-        this.specialKeysMethods[keyName](this.state);
+    _specialKeyHandler(id) {
+        this.specialKeysMethods[id](this.state);
     }
 }

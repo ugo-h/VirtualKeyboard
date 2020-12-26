@@ -62,7 +62,7 @@ export class Key {
         if (!Key.specialKeyIcons) {
             Key.specialKeyIcons = {
                 Backspace: 'https://www.svgrepo.com/show/112572/backspace.svg',
-                Lang: 'https://www.svgrepo.com/show/314251/language-solid.svg',
+                Lang: 'https://www.svgrepo.com/show/310884/globe.svg',
                 Enter: 'https://www.svgrepo.com/show/5370/next.svg'
             };
         }
