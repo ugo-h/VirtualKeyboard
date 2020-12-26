@@ -32,7 +32,7 @@ export class Key {
 
     changeRegister(isCapsOn) {
         if (this.isSpecialKey()) return;
-        if (!/[a-zA-Z]/.test(this.value)) return;
+        if (!/[a-zA-Zа-яёА-ЯЁ]/.test(this.id)) return;
         this.value = isCapsOn ? this.value.toUpperCase() : this.value.toLowerCase();
     }
 
