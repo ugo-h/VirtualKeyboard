@@ -1,5 +1,5 @@
-import { Key } from '../Key/Key';
 import { forEach2D } from '../lib/lib';
+import { createKeyboard2D } from '../Key/Keyboard2D';
 
 export default class KeyboardState {
     constructor(keys) {
@@ -9,7 +9,7 @@ export default class KeyboardState {
             langIndex: 0
         };
         this.languages = keys;
-        this.keys = Key.createKeys2DArr(this.languages[this.state.langIndex]);
+        this.keys = createKeyboard2D(this.languages[this.state.langIndex]);
         this._renderUI = null;
     }
 
@@ -22,20 +22,20 @@ export default class KeyboardState {
         this.state.isCapsOn = false;
         this.state.isShiftOn = false;
         if (this.state.langIndex >= this.languages.length) this.state.langIndex = 0;
-        this.keys = Key.createKeys2DArr(this.languages[this.state.langIndex]);
+        this.keys = createKeyboard2D(this.languages[this.state.langIndex]);
         this._renderUI();
     }
 
     changeRegister() {
         this.state.isCapsOn = !this.state.isCapsOn;
         const { isCapsOn } = this.state;
-        forEach2D(this.keys, key => key.changeRegister(isCapsOn));
+        forEach2D(this.keys, key => key.onCaps(isCapsOn));
         this._renderUI();
     }
 
     changeSpecialCharactersAndNums() {
         this.state.isShiftOn = !this.state.isShiftOn;
-        forEach2D(this.keys, key => key.changeToAlt());
+        forEach2D(this.keys, key => key.onShift());
         this._renderUI();
     }
 }

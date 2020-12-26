@@ -19,7 +19,7 @@ function createEmtpyCell() {
 }
 
 function _createKeyElement(key, state) {
-    if (key.value === null) {
+    if (key.value === 'empty') {
         return createEmtpyCell();
     }
     let innerValue = key.icon

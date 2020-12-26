@@ -8,6 +8,7 @@ export default class KeyboardController {
     constructor() {
         this.inputAPI = null;
         this.uiAPI = null;
+        this.stateAPI = null;
         this.specialKeysMethods = null;
     }
 
@@ -30,12 +31,8 @@ export default class KeyboardController {
         };
     }
 
-    pressHandler(key) {
-        if (key.isSpecialKey()) {
-            this._specialKeyHandler(key.id);
-        } else {
-            this.inputAPI.addChar(key.value);
-        }
+    pressHandler({ value, id }) {
+        console.log(id);
     }
 
     _specialKeyHandler(id) {

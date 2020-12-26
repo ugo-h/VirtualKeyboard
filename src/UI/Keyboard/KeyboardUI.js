@@ -14,7 +14,7 @@ export class KeyboardUI {
                 const value = event.target.innerText;
                 const id = event.target.id;
                 playAnimation(event.target);
-                handler(new Key(value, id));
+                handler({ value, id });
             }
         });
     }
