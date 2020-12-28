@@ -22,7 +22,7 @@ export function getKeyCode(char) {
         '/': 191,
         '`': 192
     };
-    if (ids[char]) return ids[char];
     const engChar = getTranslit(char);
+    if (ids[engChar]) return ids[engChar];
     return engChar.charCodeAt(0);
 }
