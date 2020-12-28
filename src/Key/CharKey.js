@@ -1,7 +1,8 @@
 import Key from './Key';
 
 export class CharKey extends Key {
-    /* Char keys allow state to change register of their value, while other Key classes do not.
+    /* Char keys are able to change register when caps lock is pressed,
+     while other Key classes aren't.
     They are used only in rendering */
     constructor(char) {
         super(char);

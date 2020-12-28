@@ -1,17 +1,17 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist', 'assets'),
         filename: 'index.js',
         publicPath: '/assets/'
     },
-    devServer:{
+    devServer: {
         contentBase: 'dist',
         port: 9000,
         open: true,
         hot: true
     }
-}
+};
