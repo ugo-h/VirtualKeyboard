@@ -1,38 +1,36 @@
-/* The code below violates principle of openness to extension and closeness to modification,
-but i don't know if I need to fix it, because it will make code mode interconnected
-and harder to work with. For example if I create a class for each special button with
-the action method, I still will have to use switch operator to detect if the key
-is of the proper type. (case 'Enter': new EnterKey()) */
+import { createKeyFromObj } from '../lib/lib';
+import { KeyboardUI } from '../UI/Keyboard/KeyboardUI';
+import { ActiveInputField } from '../UI/InputField/InputField';
+import { languages } from '../config/languageConfig';
+import KeyboardState from '../KeyboardState/KeyboardState';
+
+function createEventHandlersAPI(input, state) {
+    return {
+        onLang: state.changeLang.bind(state),
+        onShift: state.changeSpecialCharactersAndNums.bind(state),
+        onCaps: state.changeRegister.bind(state),
+        addChar: input.addChar.bind(input),
+        deleteChar: input.deleteChar.bind(input)
+    };
+}
 
 export default class KeyboardController {
-    constructor() {
-        this.inputAPI = null;
-        this.uiAPI = null;
-        this.stateAPI = null;
-        this.specialKeysMethods = null;
+    constructor(containerID, defaultInputID) {
+        const input = new ActiveInputField(defaultInputID);
+        this.ui = new KeyboardUI(containerID);
+        this.state = new KeyboardState(languages);
+        this.eventHandlersAPI = createEventHandlersAPI(input, this.state);
+        this.ui.onKeyPress(this.pressHandler.bind(this));
     }
 
-    connectInput(input) {
-        this.inputAPI = input;
+    renderCurrentState() {
+        this.ui.render(this.state.keys, this.state.state);
     }
 
-    connectState(state) {
-        this.stateAPI = state;
-    }
-
-    initSpecialKeysMethods() {
-        this.specialKeysMethods = {
-            backspace: () => this.inputAPI.deleteChar(),
-            enter: () => this.inputAPI.addChar('\n'),
-            space: () => this.inputAPI.addChar(' '),
-            capslock: () => this.stateAPI.onCapsLock(),
-            shift: () => this.stateAPI.onShift(),
-            lang: () => this.stateAPI.onLang()
-        };
-    }
-
-    pressHandler({ value, id }) {
-        console.log(id);
+    pressHandler({ id, value }) {
+        const key = createKeyFromObj(id, value);
+        key.onPress(this.eventHandlersAPI);
+        if (this.state.hasChanges()) this.renderCurrentState();
     }
 
     _specialKeyHandler(id) {

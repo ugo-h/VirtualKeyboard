@@ -10,11 +10,13 @@ export default class KeyboardState {
         };
         this.languages = keys;
         this.keys = createKeyboard2D(this.languages[this.state.langIndex]);
-        this._renderUI = null;
+        this.needsRerendering = false;
     }
 
-    connectRender(renderFunc) {
-        this._renderUI = () => renderFunc(this.keys, this.state);
+    hasChanges() {
+        const previous = this.needsRerendering;
+        this.needsRerendering = false;
+        return previous;
     }
 
     changeLang() {
@@ -23,19 +25,19 @@ export default class KeyboardState {
         this.state.isShiftOn = false;
         if (this.state.langIndex >= this.languages.length) this.state.langIndex = 0;
         this.keys = createKeyboard2D(this.languages[this.state.langIndex]);
-        this._renderUI();
+        this.needsRerendering = true;
     }
 
     changeRegister() {
         this.state.isCapsOn = !this.state.isCapsOn;
         const { isCapsOn } = this.state;
         forEach2D(this.keys, key => key.onCaps(isCapsOn));
-        this._renderUI();
+        this.needsRerendering = true;
     }
 
     changeSpecialCharactersAndNums() {
         this.state.isShiftOn = !this.state.isShiftOn;
         forEach2D(this.keys, key => key.onShift());
-        this._renderUI();
+        this.needsRerendering = true;
     }
 }

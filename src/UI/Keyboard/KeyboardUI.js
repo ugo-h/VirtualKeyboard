@@ -1,4 +1,3 @@
-import { Key } from '../../Key/Key';
 import { createKeyboardTableElement } from '../Keyboard/KeyboardTable';
 import { playAnimation } from '../domHelper';
 
@@ -19,13 +18,14 @@ export class KeyboardUI {
         });
     }
 
-    _render(keys, state) {
+    render(keys, state) {
         const element = createKeyboardTableElement(keys, state);
         this.container.innerHTML = '';
         this.container.append(element);
     }
 
     _preventFocus() {
+        /* Prevents focus from changing from textarea/input element to keyboard element */
         this.container.addEventListener('mousedown', (ev) => ev.preventDefault());
     }
 }

@@ -8,11 +8,12 @@ import {
 } from './SpecialKeys';
 import DynamicKey from './DynamicKey';
 import { CharKey } from './CharKey';
+import Key from './Key';
 
 function getStructure() {
     return [
         ['`', 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '-', '=', new Backspace('backspace', 8)],
-        [new CharKey('empty')],
+        [new Key('empty')],
         [new Caps('caps', 20)],
         [new Shift('shift', 16)],
         [new Lang('lang'), new Space('space'), new Enter('enter')]

@@ -1,12 +1,12 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable class-methods-use-this */
-import Key from './Key2';
+import Key from './Key';
 
 export class Backspace extends Key {
-    constructor(value, id) {
+    constructor(value) {
         super(value);
         this.size = 4;
-        this.id = id;
+        this.id = 8;
     }
 
     onPress(api) {
@@ -15,10 +15,10 @@ export class Backspace extends Key {
 }
 
 export class Enter extends Key {
-    constructor(value, id) {
+    constructor(value) {
         super(value);
         this.size = 8;
-        this.id = id;
+        this.id = 13;
     }
 
     onPress(api) {
@@ -27,10 +27,10 @@ export class Enter extends Key {
 }
 
 export class Space extends Key {
-    constructor(value, id) {
+    constructor(value) {
         super(value);
         this.size = 20;
-        this.id = id;
+        this.id = 32;
     }
 
     onPress(api) {
@@ -42,6 +42,7 @@ export class Lang extends Key {
     constructor(value) {
         super(value);
         this.size = 4;
+        this.id = 7;
     }
 
     onPress(api) {
@@ -50,10 +51,10 @@ export class Lang extends Key {
 }
 
 export class Shift extends Key {
-    constructor(value, id) {
+    constructor(value) {
         super(value);
         this.size = 7;
-        this.id = id;
+        this.id = 16;
     }
 
     onPress(api) {
@@ -65,6 +66,7 @@ export class Caps extends Key {
     constructor(value) {
         super(value);
         this.size = 5;
+        this.id = 20;
     }
 
     onPress(api) {

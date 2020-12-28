@@ -1,11 +1,9 @@
-import Key from './Key2';
+import Key from './Key';
 
-export default class DynamicKey {
+export default class DynamicKey extends Key {
     constructor(value, altValue) {
-        this.size = 2;
-        this.value = value;
+        super(value);
         this.altValue = altValue;
-        this.id = `${value}`.charCodeAt();
     }
 
     onShift() {
