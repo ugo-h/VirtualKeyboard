@@ -14,7 +14,7 @@ function createEmtpyCell() {
     const element = createElement('td', {
         className: 'keyboard__blanc'
     });
-    element.setAttribute('colspan', 3);
+    element.setAttribute('colspan', 5);
     return element;
 }
 
@@ -30,9 +30,9 @@ function _createKeyElement(key, state) {
         id: key.id
     }, innerValue);
     keyElement.setAttribute('colspan', key.size);
-    if (key.id === 'shift' && state.isShiftOn) keyElement.classList.add('active');
-    if (key.id === 'capslock' && state.isCapsOn) keyElement.classList.add('active');
-    if (key.id === 'lang') {
+    if (key.id.toString() === '16' && state.isShiftOn) keyElement.classList.add('active');
+    if (key.id.toString() === '20' && state.isCapsOn) keyElement.classList.add('active');
+    if (key.id.toString() === '7') {
         keyElement.append(languageMapping[state.langIndex + 1] || languageMapping[0]);
     }
     return keyElement;

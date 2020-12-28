@@ -1,8 +1,10 @@
 /* eslint-disable class-methods-use-this */
+import { getKeyCode } from '../lib/lib';
+
 export default class Key {
     constructor(value) {
         this.value = value;
-        this.id = `${value}`.charCodeAt(0);
+        this.id = getKeyCode(value);
         this.size = 2;
     }
 

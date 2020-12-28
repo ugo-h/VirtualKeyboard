@@ -37,3 +37,6 @@
     background:#4C77AA;
     color: white;
 }
+.active:hover{
+    background:#36567e;
+}

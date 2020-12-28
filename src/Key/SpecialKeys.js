@@ -7,6 +7,7 @@ export class Backspace extends Key {
         super(value);
         this.size = 4;
         this.id = 8;
+        this.icon = 'https://www.svgrepo.com/show/112572/backspace.svg';
     }
 
     onPress(api) {
@@ -19,6 +20,7 @@ export class Enter extends Key {
         super(value);
         this.size = 8;
         this.id = 13;
+        this.icon = 'https://www.svgrepo.com/show/5370/next.svg';
     }
 
     onPress(api) {
@@ -43,6 +45,7 @@ export class Lang extends Key {
         super(value);
         this.size = 4;
         this.id = 7;
+        this.icon = 'https://www.svgrepo.com/show/310884/globe.svg';
     }
 
     onPress(api) {
@@ -65,7 +68,7 @@ export class Shift extends Key {
 export class Caps extends Key {
     constructor(value) {
         super(value);
-        this.size = 5;
+        this.size = 6;
         this.id = 20;
     }
 

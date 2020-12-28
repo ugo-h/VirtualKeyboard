@@ -15,8 +15,11 @@ export default class KeyboardState {
 
     hasChanges() {
         const previous = this.needsRerendering;
-        this.needsRerendering = false;
         return previous;
+    }
+
+    changesRendered() {
+        this.needsRerendering = false;
     }
 
     changeLang() {

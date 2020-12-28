@@ -1,21 +1,22 @@
 import { playAnimation } from '../UI/domHelper';
 
-export function connectAnimations(state) {
+export function connectAnimations(cb) {
     const pressed = new Set();
     document.addEventListener('keydown', event => {
-        let keyId = event.key.toLowerCase();
-        pressed.add(keyId);
-        if (pressed.has('shift') && pressed.has('alt')) state.onLang();
-        else if (keyId === 'capslock') state.onCapsLock();
-        else if (keyId === 'shift') state.onShift();
-        else if (keyId === ' ') keyId = 'space';
-
-        const element = document.getElementById(keyId);
+        let id = event.keyCode.toString();
+        let value = event.key;
+        pressed.add(id);
+        if (pressed.has('16') && pressed.has('18')) {
+            cb({ id: '7', value: 'lang' });
+        } else if (id === '20' || id === '16') {
+            cb({ id, value });
+        }
+        const element = document.getElementById(id);
         if (element === null) return;
         playAnimation(element);
     });
     document.addEventListener('keyup', event => {
-        const keyId = event.key.toLowerCase();
-        pressed.delete(keyId);
+        let id = event.keyCode.toString();
+        pressed.delete(id);
     });
 }
