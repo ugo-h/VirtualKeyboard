@@ -11,7 +11,7 @@ body{
 }
 
 .inputs{
-    width: 100%;
+    width: 90%;
     max-width: 700px;
     display: flex;
     justify-content: space-between;
@@ -33,7 +33,7 @@ body{
 }
 .keyboard-container{
     max-width: 700px;
-    width: 100%;
+    width: 90%;
 }
 
 .keyboard{

@@ -20,20 +20,30 @@ function getStructure() {
     ];
 }
 
+function getSecondary(language, char) {
+    if (!language.secondary) return null;
+    return language.secondary[char];
+}
+
+function pushKey(keys, language, i) {
+    const altChar = getSecondary(language, language.main[i]);
+    if (altChar) keys.push(new DynamicKey(language.main[i], altChar));
+    else keys.push(new CharKey(language.main[i]));
+}
+
 export function createKeyboard2D(language) {
     const keys = getStructure();
-
     for (let i = 0; i < 13; i += 1) {
-        keys[0][i] = new DynamicKey(keys[0][i], language[i]);
+        keys[0][i] = new DynamicKey(keys[0][i], language.main[i]);
     }
     for (let i = 13; i < 25; i += 1) {
-        keys[1].push(new CharKey(language[i]));
+        pushKey(keys[1], language, i);
     }
     for (let i = 25; i < 36; i += 1) {
-        keys[2].push(new CharKey(language[i]));
+        pushKey(keys[2], language, i);
     }
     for (let i = 36; i < 46; i += 1) {
-        keys[3].push(new CharKey(language[i]));
+        pushKey(keys[3], language, i);
     }
     return keys;
 }

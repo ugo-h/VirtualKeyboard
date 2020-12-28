@@ -4,7 +4,22 @@ export const languageMapping = [
     'ru'
 ];
 
+export const symbolsEN = {
+    '[': '{',
+    ']': '}',
+    ';': ':',
+    '\'': '"',
+    ',': '<',
+    '.': '>',
+    '/': '?'
+};
+
 export const languages = [
-    '`!@#$%^&*()_+qwertyuiop[]asdfghjkl;\'zxcvbnm,./',
-    'ё!"№;%:?*()_+йцукенгшщзхъфывапролджэячсмитьбю.'
+    {
+        main: '`!@#$%^&*()_+qwertyuiop[]asdfghjkl;\'zxcvbnm,./',
+        secondary: symbolsEN
+    },
+    {
+        main: 'ё!"№;%:?*()_+йцукенгшщзхъфывапролджэячсмитьбю.'
+    }
 ];

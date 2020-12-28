@@ -33,7 +33,7 @@ export default class KeyboardController {
     renderCurrentState() {
         const { keys, state } = this.state;
         this.ui.render(keys, state);
-        // when state is rerendered we need to tell state
+        // when state is rerendered we need to tell it
         // that changes has been applied, so the next time we call
         // the hasChanges method it shows us an actual information
         this.state.changesAppliedToUI();
@@ -42,7 +42,7 @@ export default class KeyboardController {
     pressHandler({ id, value }) {
         const key = createKey(id, value);
         key.onPress(this.keyPressHandlerAPI);
-        // Not all key presses lead to changes in the keyboard state
+        // Not all keypresses lead to changes in the keyboard state
         // Because of that, we rerender keyboard only if it's state has changes
         if (this.state.hasChanges()) this.renderCurrentState();
     }

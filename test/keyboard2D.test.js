@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createKeyboard2D } from '../src/Key/Keyboard2D';
 import { test } from 'jest';
 

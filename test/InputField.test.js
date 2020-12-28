@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {ActiveInputField} from '../src/UI/InputField/InputField'
 import {setCursorPositionTo, getCursorPosition} from '../src/UI/domHelper';
 

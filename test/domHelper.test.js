@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {createElement, setCursorPositionTo, getCursorPosition} from '../src/UI/domHelper';
 
 test('CreateElement should create Dom element of a type that is in the first argument', () => {
