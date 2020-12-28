@@ -45,14 +45,8 @@ export class ActiveInputField {
             current = document.activeElement;
         } else {
             current = this.default;
-            current.focus();
+            // current.focus();
         }
         return current;
-    }
-
-    _triggerInputEvent() {
-        const current = this._getCurrentInput();
-        const event = new InputEvent('input');
-        current.dispatchEvent(event);
     }
 }
