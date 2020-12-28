@@ -1,6 +1,7 @@
 import Key from './Key';
 
 export default class DynamicKey extends Key {
+    /* Dynamic keys have their values dependent on the state of the shift key */
     constructor(value, altValue) {
         super(value);
         this.altValue = altValue;

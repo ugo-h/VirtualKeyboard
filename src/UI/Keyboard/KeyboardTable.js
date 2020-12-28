@@ -30,6 +30,8 @@ function _createKeyElement(key, state) {
         id: key.id
     }, innerValue);
     keyElement.setAttribute('colspan', key.size);
+    if (key.size > 2) keyElement.classList.add('special');
+    if (key.size > 16) keyElement.classList.add('space');
     if (key.id.toString() === '16' && state.isShiftOn) keyElement.classList.add('active');
     if (key.id.toString() === '20' && state.isCapsOn) keyElement.classList.add('active');
     if (key.id.toString() === '7') {

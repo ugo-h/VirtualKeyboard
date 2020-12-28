@@ -16,7 +16,7 @@ function getStructure() {
         [new Key('empty')],
         [new Caps('caps', 20)],
         [new Shift('shift', 16)],
-        [new Lang('lang'), new Space('space'), new Enter('enter')]
+        [new Lang('lang'), new Space(' '), new Enter('enter')]
     ];
 }
 

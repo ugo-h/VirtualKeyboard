@@ -1,20 +1,80 @@
-.keyboard{
-    /* display: flex;
+body{
+    margin: 0;
+    background: #f4f4f4;    
+}
+.app {
+    margin-top: 6rem;
+    display: flex;
     flex-flow: column;
-    align-items: center; */
+    align-items: center;
+    width: 100%;
+}
+
+.inputs{
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.inputs textarea{
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid transparent;
+    border: none;
+    border-radius: 5px;
+    height: 4rem;
+    width: 100%;
+}
+.inputs textarea:focus{
+    outline: none;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(20, 20, 20, 0.1);
+}
+.keyboard-container{
+    max-width: 700px;
+    width: 100%;
+}
+
+.keyboard{
+    font-family: serif;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 700px;
+    background: #f4f4f4;
+    box-shadow: 0 -7px -7px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 .keyboard__key{
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 0.1rem;
     position: relative;
-    vertical-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     cursor: pointer;
     transition: background, 200ms;
     text-align: center;
     font-size: 0.9rem;
-    width: 1.5rem;
+    padding: 0;
+    width: 13.86%;
     height: 1.5rem;
-    background: #AFE0CEF3;
+    background: #f4f4f4
+}
+.keyboard__blanc{
+    width: 16%;
+}
+.keyboard__row{
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 .keyboard__key:hover{
     background: #AFE0C1;
@@ -28,15 +88,21 @@
     pointer-events: none;
 }
 .highlighted{
-    background:#5FAFC1;
+    background:#5AC794;
 }
 .highlighted:hover{
-    background: #5FAFC1;
+    background: #5AC794;
+}
+.special{
+    width: 25%;
+}
+.space{
+    width: 50%;
 }
 .active{
-    background:#4C77AA;
+    background:#5AC794;
     color: white;
 }
 .active:hover{
-    background:#36567e;
+    background:#5AC794;
 }

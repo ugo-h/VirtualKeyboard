@@ -18,7 +18,7 @@ export default class KeyboardState {
         return previous;
     }
 
-    changesRendered() {
+    changesAppliedToUI() {
         this.needsRerendering = false;
     }
 

@@ -2,10 +2,10 @@
 import { getKeyCode } from '../lib/lib';
 
 export default class Key {
-    constructor(value) {
+    constructor(value, id) {
         this.value = value;
-        this.id = getKeyCode(value);
-        this.size = 2;
+        this.id = id || getKeyCode(value);
+        this.size = 1;
     }
 
     onPress(api) {
